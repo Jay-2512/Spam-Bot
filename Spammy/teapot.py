@@ -1,4 +1,9 @@
+from pynput.keyboard import Key, Controller
 from tkinter import *
+import time
+
+keyboard = Controller()
+
 class mainBody:
     def biscut():
         root = Tk()
