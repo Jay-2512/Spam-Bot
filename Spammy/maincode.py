@@ -5,4 +5,4 @@ from termwindow import system
 import time
 
 system()
-mainBody.biscut()
+mainBody.biscuit()
