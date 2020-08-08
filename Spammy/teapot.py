@@ -24,7 +24,17 @@ class mainBody():
 
         def start_timer():
             time.sleep(0.5)
-            start_spam(count,message)
+            try:
+                if message != "" and count > 0:
+                    start_spam(count,message)
+                elif message == "":
+                    print("[!] Message field looks like its empty!")
+                    get_requirementsConfirm(text='Message Field is Empty please fill it!!')
+                elif count == 1:
+                    print("[!] Count value not entered! Will be using the default value : 1")
+            except NameError:
+                print("One or more Field is left empty!")
+                get_requirementsConfirm.config(text="Looks like a field is left empty.. Please fill it and start again!!")
 
 
         #--main function--#
@@ -43,15 +53,20 @@ class mainBody():
         #--get message--function--#
         def get_message():
             global message
+            message = None
             message = get_messageEntry.get()
-            get_requirementsConfirm.config(text="Got the message!")
-            print("[+] Got the message !")
+            if message == "":
+                get_requirementsConfirm.config(text="Whoops! That will be treated as a space...\n Re-Enter")
+            else:
+                get_requirementsConfirm.config(text="Gotcha!")
+                print("[+] Got the message !")
 
         #--get count--function--#
         def get_count():
             global message
             global count
             right = False
+            count = 1 #default
             count = get_countEntry.get()
             try:
                 count = int(count)
@@ -75,6 +90,8 @@ class mainBody():
             get_messageEntry.delete(first=0, last=100)
             count = 1
             message = NONE
+            get_requirementsConfirm.config(text="")
+            final_message.config(text="")
             print("[!!] Erasing all stuffs from the memory! ")
 
         #--Labels --#
