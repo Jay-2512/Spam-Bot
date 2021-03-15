@@ -1,0 +1,4 @@
+python-3
+python-3 tk
+python-Pillow
+python-pynput
